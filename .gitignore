@@ -1,0 +1,53 @@
+# =========================
+# Build outputs
+# =========================
+bin/
+obj/
+
+# =========================
+# User-specific files
+# =========================
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =========================
+# Rider / VS / VS Code
+# =========================
+.vs/
+.vscode/
+.idea/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# .NET publish output
+# =========================
+publish/
+
+# =========================
+# Docker
+# =========================
+**/docker-compose.override.yml
+
+# =========================
+# Secrets (important)
+# =========================
+appsettings.Development.json
+appsettings.*.Secrets.json
+secrets.json
+
+# =========================
+# EF Core
+# =========================
+Migrations/*Designer.cs

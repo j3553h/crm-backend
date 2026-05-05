@@ -20,12 +20,13 @@ public class CustomersController : ControllerBase
     public async Task<ActionResult<IEnumerable<CustomerReadDto>>> GetCustomers()
     {
         var customers = await _context.Customers
+            .Include(c =>c.Company)
             .Select(c => new CustomerReadDto
             {
                 Id = c.Id,
                 Name = c.Name,
                 Email = c.Email,
-                CompanyName = c.Company != null ? c.Company.Name : null
+                CompanyName = c.Company != null ? c.Company.Name : "Unassigned"
             })
             .ToListAsync();
 

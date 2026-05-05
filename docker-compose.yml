@@ -1,11 +1,27 @@
+version: "3.8"
+
 services:
+  api:
+    build: .
+    ports:
+      - "5000:8080"
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=crmdb;Username=crmuser;Password=crmpassword
+
   db:
-    image: postgres:16
-    container_name: crm-postgres
+    image: postgres:15
     restart: always
     environment:
+      POSTGRES_DB: crmdb
       POSTGRES_USER: crmuser
       POSTGRES_PASSWORD: crmpassword
-      POSTGRES_DB: crmdb
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
